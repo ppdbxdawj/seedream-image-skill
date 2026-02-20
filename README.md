@@ -59,15 +59,6 @@ That's it! The agent handles prompt engineering, the single/group choice, API ca
 > export VOLC_SECRETKEY="your_secret_key"
 > ```
 
-### Supported Platforms
-
-| Platform | Access | Notes |
-|----------|--------|-------|
-| [Jimeng AI](https://jimeng.jianying.com/) | Web | 20 free generations/day |
-| [Volcengine Ark](https://console.volcengine.com/ark) | API | Enterprise, 4K direct |
-| [Jianying](https://www.capcut.cn/) | App | AI Drawing feature |
-| [CapCut](https://www.capcut.com/) | App | Global version |
-
 ### Example Prompts
 
 **Portrait Photography**
@@ -190,15 +181,6 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 > export VOLC_ACCESSKEY="你的AccessKey"
 > export VOLC_SECRETKEY="你的SecretKey"
 > ```
-
-### 支持平台
-
-| 平台 | 访问方式 | 说明 |
-|------|----------|------|
-| [即梦AI](https://jimeng.jianying.com/) | 网页 | 每天 20 次免费生成 |
-| [火山方舟](https://console.volcengine.com/ark) | API | 企业版，4K 直出 |
-| [剪映](https://www.capcut.cn/) | App | AI 绘画功能 |
-| [CapCut](https://www.capcut.com/) | App | 海外版 |
 
 ### 提示词示例
 
