@@ -73,16 +73,28 @@ clean white background, highlighting texture and material quality,
 professional commercial photography, high contrast.
 ```
 
-### API Image Generation
+### How It Works
 
-Generate images directly from the command line using the Seedream 4.0 API:
+You don't need to run any commands yourself. The workflow is simple:
+
+1. **Describe what you want** — Tell the agent your image idea in natural language
+2. **Review the prompt** — The agent generates an optimized Seedream prompt for you to review
+3. **Confirm and generate** — Once you approve, the agent calls the API and returns your image
+
+That's it! The agent handles prompt engineering, API calls, and result retrieval automatically.
+
+> **One-time setup**: You'll need to set your Volcengine API credentials as environment variables before the first generation. Get them at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
+>
+> ```bash
+> pip install -r requirements.txt
+> export VOLC_ACCESSKEY="your_access_key"
+> export VOLC_SECRETKEY="your_secret_key"
+> ```
+
+<details>
+<summary><b>Advanced: Manual CLI Usage</b></summary>
 
 ```bash
-# Setup
-pip install -r requirements.txt
-export VOLC_ACCESSKEY="your_access_key"
-export VOLC_SECRETKEY="your_secret_key"
-
 # Text-to-image
 python generate.py --prompt "A cute cat in a garden, watercolor style"
 
@@ -96,7 +108,7 @@ python generate.py --prompt "Product hero shot" --width 2560 --height 1440 --for
 python generate.py --prompt "Generate 4 blind box figures: crow, rabbit, dog, cat"
 ```
 
-Get your API credentials at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
+</details>
 
 ### Use Cases
 
@@ -190,16 +202,28 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 简洁白色背景，突出产品质感，专业商业摄影风格，高对比度。
 ```
 
-### API 一键生图
+### 使用流程
 
-通过命令行直接调用即梦 4.0 API 生成图片：
+你不需要手动执行任何命令，流程非常简单：
+
+1. **描述你的想法** — 用自然语言告诉 Agent 你想生成什么图
+2. **审核提示词** — Agent 会生成优化后的 Seedream 提示词供你审核
+3. **确认并生成** — 审核通过后，Agent 自动调用 API 并返回生成的图片
+
+就这么简单！Agent 会自动处理提示词优化、API 调用和结果获取。
+
+> **首次使用需配置**：在第一次生图前，需要设置火山引擎 API 凭证。前往 [火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/) 获取密钥，并开通 [即梦 4.0 服务](https://console.volcengine.com/ai/ability/detail/10)。
+>
+> ```bash
+> pip install -r requirements.txt
+> export VOLC_ACCESSKEY="你的AccessKey"
+> export VOLC_SECRETKEY="你的SecretKey"
+> ```
+
+<details>
+<summary><b>进阶：手动命令行用法</b></summary>
 
 ```bash
-# 环境准备
-pip install -r requirements.txt
-export VOLC_ACCESSKEY="你的AccessKey"
-export VOLC_SECRETKEY="你的SecretKey"
-
 # 文生图
 python generate.py --prompt "一只猫在花园里玩耍，水彩风格"
 
@@ -213,7 +237,7 @@ python generate.py --prompt "电商主图，产品特写" --width 2560 --height 
 python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 ```
 
-API 凭证获取：[火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/)，服务开通：[即梦 4.0](https://console.volcengine.com/ai/ability/detail/10)
+</details>
 
 ### 使用场景速查
 
