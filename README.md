@@ -47,9 +47,9 @@ You don't need to run any commands yourself. The workflow is simple:
 
 1. **Describe what you want** — Tell the agent your image idea in natural language
 2. **Review the prompt** — The agent generates an optimized Seedream prompt for you to review
-3. **Confirm and generate** — Once you approve, the agent runs the API and downloads the generated image(s) to the `output/` folder
+3. **Confirm and generate** — Before sending, the agent will confirm: *default is 1 image; do you need multiple (group)?* If you need a set, the agent uses `--no-force-single` or adds group trigger words. Once you approve, the agent runs the API and downloads the image(s) to the `output/` folder
 
-That's it! The agent handles prompt engineering, API calls, polling, and auto-download of images.
+That's it! The agent handles prompt engineering, the single/group choice, API calls, polling, and auto-download.
 
 > **One-time setup**: Set your Volcengine API credentials before the first generation. Get them at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
 >
@@ -111,17 +111,17 @@ professional commercial photography, high contrast.
 <summary><b>Advanced: Manual CLI Usage</b></summary>
 
 ```bash
-# Text-to-image
+# Text-to-image (default: 1 image)
 python generate.py --prompt "A cute cat in a garden, watercolor style"
 
 # Image editing (with reference image)
 python generate.py --prompt "Change background to beach" --image-urls "https://example.com/photo.jpg"
 
-# Specify resolution + single image
-python generate.py --prompt "Product hero shot" --width 2560 --height 1440 --force-single
+# Specify resolution (still 1 image by default)
+python generate.py --prompt "Product hero shot" --width 2560 --height 1440
 
-# Group image generation
-python generate.py --prompt "Generate 4 blind box figures: crow, rabbit, dog, cat"
+# Group image generation (use --no-force-single)
+python generate.py --prompt "Generate 4 blind box figures: crow, rabbit, dog, cat" --no-force-single
 ```
 
 </details>
@@ -179,9 +179,9 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 
 1. **描述你的想法** — 用自然语言告诉 Agent 你想生成什么图
 2. **审核提示词** — Agent 会生成优化后的 Seedream 提示词供你审核
-3. **确认并生成** — 审核通过后，Agent 调用 API 并将生成的图片自动下载到 `output/` 目录
+3. **确认并生成** — 发起请求前 Agent 会软提示：默认生成 1 张，需要多张（组图）吗？需要则加 `--no-force-single` 或保留组图触发词。确认后 Agent 调用 API 并将图片自动下载到 `output/` 目录
 
-就这么简单！Agent 会自动处理提示词优化、API 调用、轮询和图片下载。
+就这么简单！Agent 会自动处理提示词优化、单张/组图确认、API 调用、轮询和图片下载。
 
 > **首次使用需配置**：设置火山引擎 API 凭证即可。前往 [火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/) 获取密钥，并开通 [即梦 4.0 服务](https://console.volcengine.com/ai/ability/detail/10)。
 >
@@ -240,17 +240,17 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 <summary><b>进阶：手动命令行用法</b></summary>
 
 ```bash
-# 文生图
+# 文生图（默认 1 张）
 python generate.py --prompt "一只猫在花园里玩耍，水彩风格"
 
 # 图像编辑（传入参考图）
 python generate.py --prompt "将背景换成海滩" --image-urls "https://example.com/photo.jpg"
 
-# 指定分辨率 + 强制单图
-python generate.py --prompt "电商主图，产品特写" --width 2560 --height 1440 --force-single
+# 指定分辨率（默认 1 张）
+python generate.py --prompt "电商主图，产品特写" --width 2560 --height 1440
 
-# 组图生成
-python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
+# 组图生成（加 --no-force-single）
+python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图" --no-force-single
 ```
 
 </details>

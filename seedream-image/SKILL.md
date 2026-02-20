@@ -239,8 +239,9 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 当用户确认提示词后，Agent 应调用此脚本生成图片：
 1. 使用本 Skill 的提示词规则生成 prompt
 2. 用户确认 prompt 内容
-3. 调用 `python generate.py --prompt "<confirmed_prompt>"` 发起生成
-4. 等待返回结果（脚本自动轮询），图片自动下载到 `output/`，并展示路径与 URL
+3. **发起请求前软提示**：告知用户「默认生成 1 张图」，并询问「需要多张（组图）吗？」若用户需要多张，则加上 `--no-force-single` 或在提示词中保留/加入「组图」「一系列」等触发词；否则不传该参数（默认 1 张）。
+4. 调用 `python generate.py --prompt "<confirmed_prompt>"`（需要多张时加 `--no-force-single`）发起生成
+5. 等待返回结果（脚本自动轮询），图片自动下载到 `output/`，并展示路径与 URL
 
 ### 参数说明
 
@@ -251,7 +252,8 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 | `--width` / `--height` | 指定输出宽高（需同时传），不传则智能适配 |
 | `--size` | 输出面积（像素），默认 2K（2048×2048） |
 | `--scale` | 文本影响程度 0~1（默认 0.5），越大文本越强 |
-| `--force-single` | 强制只输出 1 张图 |
+| `--force-single` | 只输出 1 张图（**默认**） |
+| `--no-force-single` | 允许多张（组图），由模型根据提示词决定张数 |
 | `--watermark` | 添加 AI 水印 |
 | `--output-dir` | 生成图片保存目录（默认 output/），URL 与 base64 均会写入此处 |
 
