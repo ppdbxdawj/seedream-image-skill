@@ -171,6 +171,19 @@ def poll_until_done(
         time.sleep(poll_interval)
 
 
+def download_image(url: str, filepath: Path, timeout: int = 60) -> bool:
+    import requests as _req
+
+    try:
+        resp = _req.get(url, timeout=timeout)
+        resp.raise_for_status()
+        filepath.write_bytes(resp.content)
+        return True
+    except Exception as e:
+        print(f"  Download failed: {e}")
+        return False
+
+
 def save_images(resp: dict, output_dir: str) -> list[str]:
     data = resp.get("data", {})
     image_urls = data.get("image_urls") or []
@@ -179,21 +192,29 @@ def save_images(resp: dict, output_dir: str) -> list[str]:
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
     saved = []
+    ts = int(time.time())
 
     if image_urls:
-        print(f"\nGenerated {len(image_urls)} image(s):")
+        print(f"\nGenerated {len(image_urls)} image(s), downloading to {output_dir}/...")
         for i, url in enumerate(image_urls):
-            print(f"  [{i+1}] {url}")
-        saved = list(image_urls)
+            filepath = out / f"seedream_{ts}_{i+1}.png"
+            if download_image(url, filepath):
+                size_kb = filepath.stat().st_size / 1024
+                print(f"  [{i+1}] {filepath} ({size_kb:.0f} KB)")
+                saved.append(str(filepath))
+            else:
+                print(f"  [{i+1}] URL: {url}")
+                saved.append(url)
 
     if base64_list:
-        print(f"\nSaving {len(base64_list)} image(s) to {output_dir}/")
+        print(f"\nSaving {len(base64_list)} base64 image(s) to {output_dir}/...")
         for i, b64 in enumerate(base64_list):
             if not b64:
                 continue
-            filepath = out / f"seedream_{int(time.time())}_{i+1}.png"
+            filepath = out / f"seedream_{ts}_b64_{i+1}.png"
             filepath.write_bytes(base64.b64decode(b64))
-            print(f"  [{i+1}] {filepath}")
+            size_kb = filepath.stat().st_size / 1024
+            print(f"  [{i+1}] {filepath} ({size_kb:.0f} KB)")
             saved.append(str(filepath))
 
     return saved
