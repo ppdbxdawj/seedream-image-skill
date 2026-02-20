@@ -1,6 +1,8 @@
 # Seedream Image Prompt Skill
 
-**Generate high-quality AI image prompts for [Seedream 5.0](https://jimeng.jianying.com/) by ByteDance.**
+**Generate high-quality prompts for [Seedream 5.0/4.0](https://jimeng.jianying.com/) (即梦AI) by ByteDance — describe your idea, review the prompt, confirm, and get images auto-downloaded to your machine.**
+
+**为字节即梦AI 生成高质量提示词：描述想法 → 审核提示词 → 确认后自动生图并下载到本地。**
 
 [English](#english) | [中文](#中文)
 
@@ -14,7 +16,7 @@
 
 - **Text-to-Image Prompts** — Structured prompt templates for portraits, landscapes, posters, cards, and more
 - **Image Editing** — Style transfer, element add/remove, lighting adjustment, portrait retouching
-- **API Image Generation** — One-command image generation via Seedream 4.0 API (`generate.py`)
+- **API Image Generation** — One-command generation via Seedream 4.0 API; images are auto-downloaded to `output/`
 - **Character Consistency** — Keep face, hair, clothing identical across multiple generated images
 - **Knowledge Cards** — Infographic, tarot, blueprint, game skill card, and ancient scroll styles
 - **E-commerce** — Product photography prompts for online stores
@@ -45,9 +47,9 @@ You don't need to run any commands yourself. The workflow is simple:
 
 1. **Describe what you want** — Tell the agent your image idea in natural language
 2. **Review the prompt** — The agent generates an optimized Seedream prompt for you to review
-3. **Confirm and generate** — Once you approve, the agent calls the API and returns your image
+3. **Confirm and generate** — Once you approve, the agent runs the API and downloads the generated image(s) to the `output/` folder
 
-That's it! The agent handles prompt engineering, API calls, and result retrieval automatically.
+That's it! The agent handles prompt engineering, API calls, polling, and auto-download of images.
 
 > **One-time setup**: Set your Volcengine API credentials before the first generation. Get them at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
 >
@@ -146,7 +148,7 @@ seedream-image/
 
 - **文生图提示词** — 人物写真、风景、海报、卡片等结构化提示词模板
 - **图像编辑** — 风格迁移、元素增删、光影调整、人像美化
-- **API 一键生图** — 通过即梦 4.0 API 一键生成图片（`generate.py` 脚本）
+- **API 一键生图** — 通过即梦 4.0 API 一键生成，图片自动下载到 `output/` 目录
 - **角色一致性** — 跨图保持面部、发型、服装高度一致（连续分镜可用）
 - **知识卡片** — 信息图、塔罗牌、蓝图、游戏技能卡、仙侠古籍等风格
 - **电商产品图** — 商品展示图、试穿效果、品牌风格匹配
@@ -177,9 +179,9 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 
 1. **描述你的想法** — 用自然语言告诉 Agent 你想生成什么图
 2. **审核提示词** — Agent 会生成优化后的 Seedream 提示词供你审核
-3. **确认并生成** — 审核通过后，Agent 自动调用 API 并返回生成的图片
+3. **确认并生成** — 审核通过后，Agent 调用 API 并将生成的图片自动下载到 `output/` 目录
 
-就这么简单！Agent 会自动处理提示词优化、API 调用和结果获取。
+就这么简单！Agent 会自动处理提示词优化、API 调用、轮询和图片下载。
 
 > **首次使用需配置**：设置火山引擎 API 凭证即可。前往 [火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/) 获取密钥，并开通 [即梦 4.0 服务](https://console.volcengine.com/ai/ability/detail/10)。
 >

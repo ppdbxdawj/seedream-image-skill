@@ -1,21 +1,26 @@
 ---
 name: seedream-image
 description: |
-  Generate high-quality image prompts for Seedream 5.0 (即梦AI) by ByteDance.
-  Covers text-to-image, image editing, multi-image fusion, character consistency,
-  knowledge cards, posters, PPT backgrounds, e-commerce, avatars, and more.
+  Generates high-quality image prompts for Seedream 5.0/4.0 (即梦AI) by ByteDance,
+  and can call the API to generate images and auto-download results. Workflow:
+  describe idea → agent outputs prompt for review → user confirms → agent runs
+  generate.py (submit, poll, download images to output/). Covers text-to-image,
+  image editing, multi-image fusion, character consistency, knowledge cards,
+  posters, PPT backgrounds, e-commerce, avatars, group/storyboard generation.
 
-  为即梦AI（Seedream 5.0）生成高质量图片提示词。支持文生图、图生图、多图融合、
-  多轮编辑、知识卡片、海报、角色一致性、PPT背景、电商产品图等各类场景。
+  为即梦AI（Seedream 5.0/4.0）生成高质量提示词，并可调用 API 生图并自动下载到本地。
+  流程：描述想法 → Agent 输出提示词供审核 → 用户确认 → Agent 执行 generate.py（提交任务、
+  轮询结果、将图片下载到 output/）。支持文生图、图生图、多图融合、角色一致性、知识卡片、
+  海报、PPT背景、电商图、组图/分镜等。
 
   Triggers: "seedream", "即梦", "jimeng", "seedream prompt", "seedream 提示词",
-  "AI image prompt", "AI生图", "生成图片", "写提示词", "image generation",
+  "AI image prompt", "AI生图", "生成图片", "写提示词", "一键生图", "image generation",
   "text to image", "文生图", "图生图", "character consistency", "角色一致性",
   "knowledge card", "知识卡片", "poster design", "海报设计", "avatar",
   "头像生成", "e-commerce photo", "电商图", "PPT background", "PPT背景",
-  "multi-image fusion", "多图融合", "AI art", "AI绘画", "doubao image",
-  "豆包生图", "volcengine image", "火山方舟生图", "capcut AI image",
-  "jianying AI", "剪映AI绘画", "seedream 5", "seedream 4.5"
+  "multi-image fusion", "多图融合", "download images", "下载图片", "AI art",
+  "AI绘画", "doubao image", "豆包生图", "volcengine image", "火山方舟生图",
+  "capcut AI image", "jianying AI", "剪映AI绘画", "seedream 5", "seedream 4"
 license: MIT
 metadata:
   author: AI Visuals
@@ -203,7 +208,7 @@ Seedream 5.0 是字节跳动推出的新一代 AI 图像生成模型，已在即
 
 ## API 生图脚本 | Image Generation Script
 
-生成提示词后，可使用 `generate.py` 直接调用即梦 4.0 API 生成图片。
+生成提示词后，可使用 `generate.py` 调用即梦 4.0 API 生图；返回的图片会**自动下载**到 `--output-dir`（默认 `output/`）目录。
 
 ### 环境准备
 
@@ -235,7 +240,7 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 1. 使用本 Skill 的提示词规则生成 prompt
 2. 用户确认 prompt 内容
 3. 调用 `python generate.py --prompt "<confirmed_prompt>"` 发起生成
-4. 等待返回结果（脚本自动轮询），展示生成的图片 URL
+4. 等待返回结果（脚本自动轮询），图片自动下载到 `output/`，并展示路径与 URL
 
 ### 参数说明
 
@@ -248,7 +253,7 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 | `--scale` | 文本影响程度 0~1（默认 0.5），越大文本越强 |
 | `--force-single` | 强制只输出 1 张图 |
 | `--watermark` | 添加 AI 水印 |
-| `--output-dir` | base64 图片保存目录（默认 output/） |
+| `--output-dir` | 生成图片保存目录（默认 output/），URL 与 base64 均会写入此处 |
 
 ## References | 参考文件
 
