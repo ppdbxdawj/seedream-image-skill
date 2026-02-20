@@ -1,29 +1,16 @@
 ---
 name: seedream-image
 description: |
-  Generates high-quality image prompts for Seedream 5.0/4.0 (即梦AI) by ByteDance,
-  and can call the API to generate images and auto-download results. Workflow:
-  describe idea → agent outputs prompt for review → user confirms → agent runs
-  generate.py (submit, poll, download images to output/). Covers text-to-image,
-  image editing, multi-image fusion, character consistency, knowledge cards,
-  posters, PPT backgrounds, e-commerce, avatars, group/storyboard generation.
-
-  为即梦AI（Seedream 5.0/4.0）生成高质量提示词，并可调用 API 生图并自动下载到本地。
-  流程：描述想法 → Agent 输出提示词供审核 → 用户确认 → Agent 执行 generate.py（提交任务、
-  轮询结果、将图片下载到 output/）。支持文生图、图生图、多图融合、角色一致性、知识卡片、
-  海报、PPT背景、电商图、组图/分镜等。
-
-  Triggers: "seedream", "即梦", "jimeng", "seedream prompt", "seedream 提示词",
-  "AI image prompt", "AI生图", "生成图片", "写提示词", "一键生图", "image generation",
-  "text to image", "文生图", "图生图", "character consistency", "角色一致性",
-  "knowledge card", "知识卡片", "poster design", "海报设计", "avatar",
-  "头像生成", "e-commerce photo", "电商图", "PPT background", "PPT背景",
-  "multi-image fusion", "多图融合", "download images", "下载图片", "AI art",
-  "AI绘画", "doubao image", "豆包生图", "volcengine image", "火山方舟生图",
-  "capcut AI image", "jianying AI", "剪映AI绘画", "seedream 5", "seedream 4"
+  Generates Seedream 5.0/4.0 (即梦AI) image prompts and can call the API to generate
+  images and auto-download to output/. Workflow: describe idea → agent outputs prompt
+  for review → user confirms → agent runs generate.py. Covers text-to-image, image
+  editing, multi-image fusion, character consistency, knowledge cards, posters,
+  PPT backgrounds, e-commerce, avatars, group/storyboard. Use when the user mentions
+  seedream, 即梦, jimeng, AI生图, 文生图, 图生图, seedream prompt, 提示词, 一键生图,
+  knowledge card, poster design, 海报, 电商图, 角色一致性, or image generation.
 license: MIT
 metadata:
-  author: AI Visuals
+  author: 葱姜蒜
   version: "1.0.0"
   homepage: https://github.com/ppdbxdawj/ai-skills
   tags:
@@ -188,38 +175,22 @@ Seedream 5.0 是字节跳动推出的新一代 AI 图像生成模型，已在即
 - `不要文字水印`
 - `不要过度曝光`
 
-## 平台入口
+## 平台入口 | Platforms
 
-- **即梦AI**（灰度测试）：https://jimeng.jianying.com/
-- **火山方舟**（企业/4K直出）：https://console.volcengine.com/ark
-- **剪映 App**：AI绘画功能选 Seedream 5.0
-- **CapCut**（海外版）：AI Image 功能
-
-每天免费 20 次生成额度（2K 清晰度免费，4K 增强可能收费）。
-
-## Supported Platforms | 可用平台
-
-| Platform | URL | Notes |
-|----------|-----|-------|
-| **Jimeng AI** 即梦AI | https://jimeng.jianying.com/ | Primary web app, 20 free/day |
-| **Volcengine Ark** 火山方舟 | https://console.volcengine.com/ark | Enterprise API, 4K direct |
-| **Jianying** 剪映 | App Store | AI Drawing → Seedream 5.0 |
-| **CapCut** (Global) | App Store | AI Image feature |
+| 平台 | URL | 说明 |
+|------|-----|------|
+| **即梦AI** Jimeng AI | https://jimeng.jianying.com/ | 主站，每日约 20 次免费 2K |
+| **火山方舟** Volcengine Ark | https://console.volcengine.com/ark | 企业 API，支持 4K |
+| **剪映** Jianying | App Store | AI 绘画 → Seedream 5.0 |
+| **CapCut** (海外) | App Store | AI Image |
 
 ## API 生图脚本 | Image Generation Script
 
-生成提示词后，可使用 `generate.py` 调用即梦 4.0 API 生图；返回的图片会**自动下载**到 `--output-dir`（默认 `output/`）目录。
+`generate.py` 调用即梦 4.0 API，图片自动下载到 `--output-dir`（默认 `output/`）。
 
 ### 环境准备
 
-**方式一（推荐）**：在 **与 `generate.py` 同目录**下新建 `.env`，写入 `VOLC_ACCESSKEY=...` 和 `VOLC_SECRETKEY=...`。脚本按自身所在目录自动查找 `.env`，无论用户是 git 克隆还是 `npx skills add` 安装均生效，Agent 调用时也无需再配环境变量。
-
-**方式二**：在终端 `export VOLC_ACCESSKEY`、`export VOLC_SECRETKEY`。
-
-```bash
-pip install -r requirements.txt
-# .env 或 export 二选一即可
-```
+在 `generate.py` 同目录建 `.env` 写入 `VOLC_ACCESSKEY`、`VOLC_SECRETKEY`，或终端 export。脚本自动读取同目录 `.env`。`pip install -r requirements.txt`。
 
 ### 用法
 
@@ -239,12 +210,10 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 
 ### 在 Skill 工作流中使用
 
-当用户确认提示词后，Agent 应调用此脚本生成图片：
-1. 使用本 Skill 的提示词规则生成 prompt
-2. 用户确认 prompt 内容
-3. **发起请求前软提示**：告知用户「默认生成 1 张图」，并询问「需要多张（组图）吗？」若用户需要多张，则加上 `--no-force-single` 或在提示词中保留/加入「组图」「一系列」等触发词；否则不传该参数（默认 1 张）。
-4. 调用 `python generate.py --prompt "<confirmed_prompt>"`（需要多张时加 `--no-force-single`）发起生成
-5. 等待返回结果（脚本自动轮询），图片自动下载到 `output/`，并展示路径与 URL
+1. 按本 Skill 规则生成 prompt，用户确认。
+2. 发起前软提示：默认 1 张，需多张（组图）则加 `--no-force-single` 或保留「组图」「一系列」等词。
+3. 执行 `python generate.py --prompt "<confirmed_prompt>"`（组图时加 `--no-force-single`）。
+4. 脚本轮询完成后图片在 `output/`，展示路径与 URL。
 
 ### 参数说明
 

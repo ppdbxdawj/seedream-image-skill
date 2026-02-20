@@ -1,9 +1,9 @@
 {
   "name": "seedream-image",
   "version": "1.0.0",
-  "description": "Generate high-quality AI image prompts for Seedream 5.0 (即梦AI) by ByteDance. Covers text-to-image, image editing, multi-image fusion, character consistency, knowledge cards, posters, PPT backgrounds, e-commerce, avatars, and more.",
-  "description_zh": "为即梦AI（Seedream 5.0）生成高质量图片提示词。支持文生图、图生图、多图融合、多轮编辑、知识卡片、海报、角色一致性、PPT背景、电商产品图等各类场景。",
-  "author": "AI Visuals",
+  "description": "Generates Seedream 5.0/4.0 (即梦AI) image prompts and can call the API to generate and auto-download images. Covers text-to-image, image editing, multi-image fusion, character consistency, knowledge cards, posters, PPT, e-commerce, avatars, group/storyboard.",
+  "description_zh": "为即梦AI 生成高质量提示词并可 API 生图、自动下载。支持文生图、图生图、多图融合、角色一致性、知识卡片、海报、PPT、电商、组图/分镜等。",
+  "author": "葱姜蒜",
   "license": "MIT",
   "homepage": "https://github.com/ppdbxdawj/ai-skills",
   "repository": "https://github.com/ppdbxdawj/ai-skills",
