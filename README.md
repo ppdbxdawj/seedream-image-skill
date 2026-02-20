@@ -39,6 +39,24 @@ git clone https://github.com/ppdbxdawj/seedream-image-skill.git
 cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 ```
 
+### How It Works
+
+You don't need to run any commands yourself. The workflow is simple:
+
+1. **Describe what you want** — Tell the agent your image idea in natural language
+2. **Review the prompt** — The agent generates an optimized Seedream prompt for you to review
+3. **Confirm and generate** — Once you approve, the agent calls the API and returns your image
+
+That's it! The agent handles prompt engineering, API calls, and result retrieval automatically.
+
+> **One-time setup**: Set your Volcengine API credentials before the first generation. Get them at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
+>
+> ```bash
+> pip install -r requirements.txt
+> export VOLC_ACCESSKEY="your_access_key"
+> export VOLC_SECRETKEY="your_secret_key"
+> ```
+
 ### Supported Platforms
 
 | Platform | Access | Notes |
@@ -73,23 +91,19 @@ clean white background, highlighting texture and material quality,
 professional commercial photography, high contrast.
 ```
 
-### How It Works
+### Use Cases
 
-You don't need to run any commands yourself. The workflow is simple:
-
-1. **Describe what you want** — Tell the agent your image idea in natural language
-2. **Review the prompt** — The agent generates an optimized Seedream prompt for you to review
-3. **Confirm and generate** — Once you approve, the agent calls the API and returns your image
-
-That's it! The agent handles prompt engineering, API calls, and result retrieval automatically.
-
-> **One-time setup**: You'll need to set your Volcengine API credentials as environment variables before the first generation. Get them at [Volcengine IAM](https://console.volcengine.com/iam/keymanage/) and enable the service at [Jimeng 4.0](https://console.volcengine.com/ai/ability/detail/10).
->
-> ```bash
-> pip install -r requirements.txt
-> export VOLC_ACCESSKEY="your_access_key"
-> export VOLC_SECRETKEY="your_secret_key"
-> ```
+| Scenario | Key Prompts |
+|----------|-------------|
+| Social media avatar | `square composition` `solid background` `icon style` |
+| Knowledge card | `infographic` `clean layout` `target audience: ...` |
+| PPT background | `for PPT cover background` `whitespace` `matte background` |
+| E-commerce hero | `product hero shot` `commercial photography` `clean background` |
+| Poster design | `movie poster level` `dramatic lighting` `large whitespace` |
+| Brand design | `brand VI visual` `include logo/packaging/cards` |
+| Character cosplay | `keep face unchanged` `realistic costume` `same pose` |
+| Storyboard / comic | `generate a set of comics` `storyboard` `group image` |
+| Education | `comparison chart` `info poster` `knowledge explainer` |
 
 <details>
 <summary><b>Advanced: Manual CLI Usage</b></summary>
@@ -109,20 +123,6 @@ python generate.py --prompt "Generate 4 blind box figures: crow, rabbit, dog, ca
 ```
 
 </details>
-
-### Use Cases
-
-| Scenario | Key Prompts |
-|----------|-------------|
-| Social media avatar | `square composition` `solid background` `icon style` |
-| Knowledge card | `infographic` `clean layout` `target audience: ...` |
-| PPT background | `for PPT cover background` `whitespace` `matte background` |
-| E-commerce hero | `product hero shot` `commercial photography` `clean background` |
-| Poster design | `movie poster level` `dramatic lighting` `large whitespace` |
-| Brand design | `brand VI visual` `include logo/packaging/cards` |
-| Character cosplay | `keep face unchanged` `realistic costume` `same pose` |
-| Storyboard / comic | `generate a set of comics` `storyboard` `group image` |
-| Education | `comparison chart` `info poster` `knowledge explainer` |
 
 ### File Structure
 
@@ -171,6 +171,24 @@ git clone https://github.com/ppdbxdawj/seedream-image-skill.git
 cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 ```
 
+### 使用流程
+
+你不需要手动执行任何命令，流程非常简单：
+
+1. **描述你的想法** — 用自然语言告诉 Agent 你想生成什么图
+2. **审核提示词** — Agent 会生成优化后的 Seedream 提示词供你审核
+3. **确认并生成** — 审核通过后，Agent 自动调用 API 并返回生成的图片
+
+就这么简单！Agent 会自动处理提示词优化、API 调用和结果获取。
+
+> **首次使用需配置**：设置火山引擎 API 凭证即可。前往 [火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/) 获取密钥，并开通 [即梦 4.0 服务](https://console.volcengine.com/ai/ability/detail/10)。
+>
+> ```bash
+> pip install -r requirements.txt
+> export VOLC_ACCESSKEY="你的AccessKey"
+> export VOLC_SECRETKEY="你的SecretKey"
+> ```
+
 ### 支持平台
 
 | 平台 | 访问方式 | 说明 |
@@ -202,23 +220,19 @@ cp -r seedream-image-skill/seedream-image ~/.cursor/skills/
 简洁白色背景，突出产品质感，专业商业摄影风格，高对比度。
 ```
 
-### 使用流程
+### 使用场景速查
 
-你不需要手动执行任何命令，流程非常简单：
-
-1. **描述你的想法** — 用自然语言告诉 Agent 你想生成什么图
-2. **审核提示词** — Agent 会生成优化后的 Seedream 提示词供你审核
-3. **确认并生成** — 审核通过后，Agent 自动调用 API 并返回生成的图片
-
-就这么简单！Agent 会自动处理提示词优化、API 调用和结果获取。
-
-> **首次使用需配置**：在第一次生图前，需要设置火山引擎 API 凭证。前往 [火山引擎密钥管理](https://console.volcengine.com/iam/keymanage/) 获取密钥，并开通 [即梦 4.0 服务](https://console.volcengine.com/ai/ability/detail/10)。
->
-> ```bash
-> pip install -r requirements.txt
-> export VOLC_ACCESSKEY="你的AccessKey"
-> export VOLC_SECRETKEY="你的SecretKey"
-> ```
+| 场景 | 关键提示词 |
+|------|-----------|
+| 社交头像 | `正方形构图` `纯色背景` `图标风格` |
+| 知识卡片 | `信息图` `排版清晰` `目标受众：...` |
+| PPT 背景 | `用于PPT封面背景` `留白构图` `哑光背景` |
+| 电商主图 | `电商主图` `产品展示` `专业商业摄影` |
+| 海报设计 | `电影海报级别` `戏剧光` `大面积留白` |
+| 品牌设计 | `品牌VI视觉` `包含logo/包装/卡片` |
+| 角色 Cos | `保持人脸不变` `写实质感服饰` `相同姿势` |
+| 分镜漫画 | `生成一组漫画` `分镜图` `组图` |
+| 教育培训 | `对比图` `信息海报` `知识科普` |
 
 <details>
 <summary><b>进阶：手动命令行用法</b></summary>
@@ -238,20 +252,6 @@ python generate.py --prompt "生成4张分别关于春夏秋冬的盲盒组图"
 ```
 
 </details>
-
-### 使用场景速查
-
-| 场景 | 关键提示词 |
-|------|-----------|
-| 社交头像 | `正方形构图` `纯色背景` `图标风格` |
-| 知识卡片 | `信息图` `排版清晰` `目标受众：...` |
-| PPT 背景 | `用于PPT封面背景` `留白构图` `哑光背景` |
-| 电商主图 | `电商主图` `产品展示` `专业商业摄影` |
-| 海报设计 | `电影海报级别` `戏剧光` `大面积留白` |
-| 品牌设计 | `品牌VI视觉` `包含logo/包装/卡片` |
-| 角色 Cos | `保持人脸不变` `写实质感服饰` `相同姿势` |
-| 分镜漫画 | `生成一组漫画` `分镜图` `组图` |
-| 教育培训 | `对比图` `信息海报` `知识科普` |
 
 ### 文件结构
 
