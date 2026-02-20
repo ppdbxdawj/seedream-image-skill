@@ -1,6 +1,7 @@
-# Seedream Image Prompt Skill
+# Seedream Image Skill | Seedream 即梦 图像技能
 
-[Seedream 5.0/4.0](https://jimeng.jianying.com/) (即梦AI) 提示词生成与 API 生图 — 描述想法 → 审核提示词 → 确认后自动下载到 `output/`。
+**EN:** [Seedream 5.0/4.0](https://jimeng.jianying.com/) (即梦AI) — text-to-image, image editing, multi-image fusion, character consistency, knowledge cards, posters, PPT, e-commerce, group/storyboard; describe idea → review prompt → confirm and auto-download to `output/`.  
+**中文：** 即梦AI — 文生图、图生图、多图融合、角色一致性、知识卡片、海报、PPT、电商、组图/分镜；描述想法 → 审核提示词 → 确认后自动下载到 `output/`。
 
 [English](#english) | [中文](#中文)
 

@@ -26,7 +26,7 @@ metadata:
     - creative-tools
 ---
 
-# Seedream Image Prompt Assistant | Seedream 生图提示词助手
+# Seedream Image Assistant | Seedream 即梦 图像助手
 
 Seedream 5.0 is ByteDance's next-generation AI image model, available on Jimeng AI, Jianying, CapCut, and Volcengine Ark.
 
